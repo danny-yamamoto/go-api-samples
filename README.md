@@ -20,3 +20,5 @@ curl "localhost:8080/storage?bucket=sanbox-334000_bucket&object=test.html" -i
 - ResponseWriter の設定
 - Hanlder の使い方
 - `type` の書式
+- `os.Getenv` の漏れ
+- `defer rc.Body.Close()` の漏れ
