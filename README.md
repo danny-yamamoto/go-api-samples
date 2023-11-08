@@ -15,3 +15,8 @@ go run cmd/storage/main.go
 curl "localhost:8080/storage?bucket=sanbox-334000_bucket&object=test.txt" -i
 curl "localhost:8080/storage?bucket=sanbox-334000_bucket&object=test.html" -i
 ```
+
+## note
+- ResponseWriter の設定
+- Hanlder の使い方
+- `type` の書式
