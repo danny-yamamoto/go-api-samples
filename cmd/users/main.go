@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -50,12 +51,14 @@ func main() {
 	dbUrl := os.Getenv(key)
 	client, err := sql.Open("sqlite3", dbUrl)
 	if err != nil {
-		fmt.Printf("connection failed. %s", err)
+		fmt.Printf("Failed to create connection: %s", err)
+		return
 	}
 	defer client.Close()
 	handler := NewHandler(client)
 	http.HandleFunc("/users", handler.UserHandler)
 	port := "8080"
 	addr := fmt.Sprintf("0.0.0.0:%s", port)
-	http.ListenAndServe(addr, nil)
+	fmt.Printf("Listening on http://%s\n", addr)
+	log.Fatal(http.ListenAndServe(addr, nil))
 }
