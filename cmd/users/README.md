@@ -30,5 +30,10 @@ export DATABASE_URL="local.db"
 echo $DATABASE_URL
 ```
 
+### test
+```bash
+curl "localhost:8080/users?user_id=1" -i
+```
+
 ### note
 - driver blank import
