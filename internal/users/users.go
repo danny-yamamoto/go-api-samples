@@ -2,8 +2,10 @@ package users
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -30,4 +32,16 @@ func GetUsers(db *sql.DB, query UserQuery) (*User, error) {
 		return nil, err
 	}
 	return &user, nil
+}
+
+// Factory Function
+func New(db *sql.DB) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		query := UserQuery{UserId: r.URL.Query().Get("user_id")}
+		data, err := GetUsers(db, query)
+		if err != nil {
+			json.NewEncoder(w).Encode(err)
+		}
+		json.NewEncoder(w).Encode(data)
+	}
 }

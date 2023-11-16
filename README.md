@@ -40,7 +40,7 @@ vscode ➜ /workspaces/go-api-samples (feature/add-user-to-server) $
 
 - `/storage`
 ```bash
-vscode ➜ /workspaces/go-api-samples (feature/add-user-to-server) curl "localhost:8080/storage?bucket=sanbox-334000_bucket&object=test.html" -i-i
+vscode ➜ /workspaces/go-api-samples (feature/add-user-to-server) curl "localhost:8080/storage?bucket=sanbox-334000_bucket&object=test.html" -i
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Thu, 16 Nov 2023 03:31:51 GMT
