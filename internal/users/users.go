@@ -3,7 +3,6 @@ package users
 import (
 	"database/sql"
 	"encoding/json"
-	"fmt"
 	"log"
 	"net/http"
 
@@ -25,7 +24,6 @@ type UserQuery struct {
 func GetUsers(db *sql.DB, query UserQuery) (*User, error) {
 	userId := query.UserId
 	var user User
-	fmt.Printf("user_id: %s", userId)
 	err := db.QueryRow("select * from users where user_id = ?", userId).Scan(&user.UserId, &user.EmailAddress, &user.CreatedAt, &user.Deleted, &user.Settings)
 	if err != nil {
 		log.Printf("Query Error: %s", err)
