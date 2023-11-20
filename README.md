@@ -12,9 +12,6 @@ A collection of REST API samples implemented in Go.
 ```bash
 export GOOGLE_APPLICATION_CREDENTIALS="/workspaces/go-api-samples/key.json"
 echo $GOOGLE_APPLICATION_CREDENTIALS
-```
-
-```bash
 export DATABASE_URL="local.db"
 echo $DATABASE_URL
 ```

@@ -38,7 +38,8 @@ func New(db *sql.DB) http.HandlerFunc {
 		query := UserQuery{UserId: r.URL.Query().Get("user_id")}
 		data, err := GetUsers(db, query)
 		if err != nil {
-			json.NewEncoder(w).Encode(err)
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 		json.NewEncoder(w).Encode(data)
 	}
